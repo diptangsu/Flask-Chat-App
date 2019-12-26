@@ -30,14 +30,17 @@
                 e.preventDefault()
                 let user_name = $('input.username').val()
                 let user_input = $('input.message').val()
+
                 socket.emit('recvMsg', {
                     user_name: user_name,
                     message: user_input
                 })
+
                 $('input.message').val('').focus()
             })
         })
-        socket.on('my response', (msg) => {
+
+        socket.on('sendMsg', (msg) => {
             console.log(msg)
             if (typeof msg.user_name !== 'undefined') {
                 $('h3').remove()

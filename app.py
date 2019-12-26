@@ -19,7 +19,7 @@ def message_received(methods=['GET', 'POST']):
 @socketio.on('recvMsg')
 def receive_message(json, methods=['GET', 'POST']):
     print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=message_received)
+    socketio.emit('sendMsg', json, callback=message_received)
 
 
 if __name__ == '__main__':
